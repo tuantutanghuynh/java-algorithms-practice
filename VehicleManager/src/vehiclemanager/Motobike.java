@@ -21,6 +21,7 @@ public class Motobike extends Vehicle {
         engineCC = sc.nextInt();
       }
     
+    @Override
     public void ShowInfo(){
           System.out.println("Brand: " + brand + ", Speed: " + speed + ", Fuel type: " + fuelType + ", Engine CC: " +engineCC);
       }

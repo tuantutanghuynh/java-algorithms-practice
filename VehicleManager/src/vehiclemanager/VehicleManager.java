@@ -4,9 +4,17 @@
  */
 package vehiclemanager;
 
+import java.util.Scanner;
+
 /**
+ * Entry point for the Vehicle Management System.
+ * Menu-driven CLI to manage cars, motorbikes, and trucks.
+ *
+ * <p>FR: Point d'entrée du Système de Gestion des Véhicules.
+ * Interface CLI par menus pour gérer voitures, motos et camions.</p>
  *
  * @author tangh
+ * @version 1.0
  */
 public class VehicleManager {
 
