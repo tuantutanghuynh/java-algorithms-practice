@@ -1,2 +1,6 @@
 # Ignore all markdown files
 *.md
+/PracticeDay5/nbproject/private/
+/PracticeDay5/build/
+/BankAccountSystem/nbproject/private/
+/BankAccountSystem/build/
