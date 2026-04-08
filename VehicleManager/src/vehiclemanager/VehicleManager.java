@@ -36,7 +36,7 @@ public class VehicleManager {
             System.out.println("4. Show");
             System.out.println("5. Filter by fuel");
             System.out.println("6. Exit");
-            System.out.print("Chon: ");
+            System.out.print("Choose: ");
 
             option = sc.nextLine();
 
@@ -58,7 +58,7 @@ public class VehicleManager {
                     break;
 
                 case "5":
-                    System.out.print("Nhap loai nhien lieu: ");
+                    System.out.print("Input fuel type: ");
                     String fuel = sc.nextLine();
                     list.FilterByFuel(fuel);
                     break;
@@ -68,7 +68,7 @@ public class VehicleManager {
                     return;
 
                 default:
-                    System.out.println("Sai lua chon!");
+                    System.out.println("Invalid option!");
             }
         }
     }
