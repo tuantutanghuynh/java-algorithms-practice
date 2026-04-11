@@ -4,6 +4,8 @@
  */
 package hotelsystem;
 
+import java.util.Scanner;
+
 /**
  *
  * @author tangh
@@ -19,6 +21,29 @@ public class StandardRoom extends Room {
     @Override
    public void Input(){
        Scanner sc = new Scanner(System.in);
-       
+       super.Input();
+       while(true){
+           System.out.println("Input Bed Type (Single/Double):");
+           try{
+               bedType = sc.nextLine().trim();
+               if( bedType.isEmpty()){
+                   throw new Exception("Bed Type must not be empty");
+                   }
+               if(bedType.equalsIgnoreCase("Single") ||bedType.equalsIgnoreCase("Double")){
+                   break;
+               }
+               throw new Exception("Please enter 'Single' or 'Double' ");
+           }catch (Exception e){
+               System.out.println("Error: " + e.getMessage());
+           }
+           
+       }
+   }
+   
+    @Override
+   public void PrintInfo(){
+        System.out.println("STANDARD: ");
+        super.PrintInfo();
+        System.out.println("Bed Type: " + bedType);
    }
 }
