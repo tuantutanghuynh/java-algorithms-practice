@@ -4,10 +4,50 @@
  */
 package hotelsystem;
 
+import java.util.Scanner;
+
 /**
  *
  * @author tangh
  */
-public class DeluxeRoom {
+public class DeluxeRoom extends Room{
+    boolean hasSeaView;
     
+    @Override
+    public void Input(){
+        Scanner sc = new Scanner(System.in);
+        super.Input();
+        
+        while(true){
+            System.out.print("Sea view? (Yes/No: ");
+            String input = sc.nextLine().trim().toLowerCase();
+            if(input.equals("yes") || input.equals("true")){
+                hasSeaView = true;
+                break;
+            }
+            if(input.equals("no") || input.equals("false")){
+                hasSeaView = false;
+                break;
+            }
+            System.out.println("Error: Please enter just 'yes' or 'no' .");
+        }
+    }
+    
+    @Override
+    public void PrintInfo(){
+        System.out.println("DELUXE: ");
+        super.PrintInfo();
+        System.out.println("SeaView: " + (hasSeaView ? "Yes" : "No"));
+   }
+        
+    
+
+    @Override
+    public String GetRoomType() {
+        return "Deluxe";
+    }
+    
+    public double CalcCost(int nights){
+        return pricePerNight * nights *1.5;
+    }
 }
