@@ -14,31 +14,25 @@ public class DeluxeRoom extends Room{
     boolean hasSeaView;
     
     @Override
-    public void Input(){
+    public void Input() {
         Scanner sc = new Scanner(System.in);
         super.Input();
-        
-        while(true){
-            System.out.print("Sea view? (Yes/No: ");
+
+        while (true) {
+            System.out.print("  Sea view? (yes/no): ");
             String input = sc.nextLine().trim().toLowerCase();
-            if(input.equals("yes") || input.equals("true")){
-                hasSeaView = true;
-                break;
-            }
-            if(input.equals("no") || input.equals("false")){
-                hasSeaView = false;
-                break;
-            }
-            System.out.println("Error: Please enter just 'yes' or 'no' .");
+            if (input.equals("yes") || input.equals("true"))  { hasSeaView = true;  break; }
+            if (input.equals("no")  || input.equals("false")) { hasSeaView = false; break; }
+            System.out.println("  Error: Please enter 'yes' or 'no'.");
         }
     }
-    
+
     @Override
-    public void PrintInfo(){
-        System.out.println("DELUXE: ");
+    public void PrintInfo() {
+        System.out.println("[DELUXE]");
         super.PrintInfo();
-        System.out.println("SeaView: " + (hasSeaView ? "Yes" : "No"));
-   }
+        System.out.println("  Sea view: " + (hasSeaView ? "Yes" : "No"));
+    }
         
     
 

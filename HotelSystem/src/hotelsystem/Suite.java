@@ -1,18 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package hotelsystem;
 
 import java.util.Scanner;
 
-/**
- *
- * @author tangh
- */
 public class Suite extends Room {
 
-    int numRoom;
+    int numRooms; // number of separate rooms within this suite (living area + bedrooms)
 
     @Override
     public void Input() {
@@ -20,34 +12,34 @@ public class Suite extends Room {
         super.Input();
 
         while (true) {
-            System.out.print("Number of rooms in suite: ");
+            System.out.print("  Number of rooms in suite: ");
             try {
-                numRoom = Integer.parseInt(sc.nextLine().trim());
-                if (numRoom <= 0) {
-                    throw new Exception("Number of rooms must be > 0");
-                }
-                break; 
+                numRooms = Integer.parseInt(sc.nextLine().trim());
+                if (numRooms <= 0) throw new IllegalArgumentException("Number of rooms must be > 0.");
+                break;
             } catch (NumberFormatException e) {
-                System.out.println("Error: Please enter a valid integer.");
-            } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());
+                System.out.println("  Error: Please enter a valid integer.");
+            } catch (IllegalArgumentException e) {
+                System.out.println("  Error: " + e.getMessage());
             }
         }
-
     }
-    
-    public void PrintInfo(){
+
+    @Override
+    public void PrintInfo() {
         System.out.println("[SUITE]");
         super.PrintInfo();
-        System.out.println("Room in suite: " + numRoom);
+        System.out.println("  Rooms in suite: " + numRooms);
     }
 
     @Override
     public String GetRoomType() {
-       return "Suite";
+        return "Suite";
     }
-    
-    public double CalcCost(int nights){
+
+    // Override: Suites are priced at 2x the base rate per night.
+    @Override
+    public double CalcCost(int nights) {
         return pricePerNight * nights * 2.0;
     }
 }
