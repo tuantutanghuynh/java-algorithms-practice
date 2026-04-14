@@ -17,44 +17,40 @@ public abstract class Room implements IBookable{
     public void Input() {
         Scanner sc = new Scanner(System.in);
         while (true) {
-            System.out.print("Input Room Number: ");
-            try{
+            System.out.print("  Room number     : ");
+            try {
                 roomNumber = sc.nextLine().trim();
-                if(roomNumber.isEmpty()){
-                    throw new Exception("Room number must not be empty!");
-                }break;
-            
-            }catch (Exception e){
-                System.out.println("Error: " + e.getMessage());
-            }
-        }
-        
-        while(true){
-            System.out.print("Input Price per Night: ");
-            try{
-                pricePerNight = Float.parseFloat(sc.nextLine().trim());
-                if (pricePerNight <= 0 ) 
-                    throw new Exception("Price must be > 0.");
-                 break;
-            } catch (NumberFormatException e) {
-                System.out.println("  [Error] Please enter a valid number.");
+                if (roomNumber.isEmpty()) throw new Exception("Room number must not be empty.");
+                break;
             } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());                         
+                System.out.println("  Error: " + e.getMessage());
             }
         }
-        isAvailable =true;
+
+        while (true) {
+            System.out.print("  Price per night : ");
+            try {
+                pricePerNight = Double.parseDouble(sc.nextLine().trim());
+                if (pricePerNight <= 0) throw new IllegalArgumentException("Price must be > 0.");
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("  Error: Please enter a valid number.");
+            } catch (IllegalArgumentException e) {
+                System.out.println("  Error: " + e.getMessage());
+            }
+        }
+
+        isAvailable = true;
     }
 
     @Override
     public void PrintInfo() {
-        System.out.println("Room: " + roomNumber + ", Price/Night" + pricePerNight + ", Available: " +(isAvailable ? "Yes" : "No") + ", Type" + GetRoomType() );
+        System.out.println("  Room: " + roomNumber
+                + " | Price/night: " + pricePerNight
+                + " | Available: " + (isAvailable ? "Yes" : "No")
+                + " | Type: " + GetRoomType());
     }
 
-    /**
-     *
-     * @param nights
-     * @return
-     */
     @Override
     public double CalcCost(int nights) {
         return pricePerNight * nights;
