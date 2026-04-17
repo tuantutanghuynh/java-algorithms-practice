@@ -1,5 +1,6 @@
-# Ignore all markdown files
+# Ignore all markdown files except README
 *.md
+!README.md
 
 # Ignore PDF files
 *.pdf
@@ -22,3 +23,4 @@
 /HotelSystem/build/
 /Student_bumber/nbproject/private/
 /Student_bumber/build/
+/SchoolSystem/nbproject/private/
